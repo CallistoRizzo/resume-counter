@@ -1,6 +1,6 @@
 # .github/workflows/deploy.yml
 # Cloud Resume Challenge — CI/CD for the back end.
-# Automatically redeploys the Cloudflare Worker whenever you push to main.
+# On every push to main: run the tests first, and only deploy if they pass.
 
 name: Deploy Worker
 
@@ -10,9 +10,28 @@ on:
   workflow_dispatch: # lets you also run it manually from the Actions tab
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run tests
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
   deploy:
     runs-on: ubuntu-latest
     name: Deploy resume-counter to Cloudflare
+    needs: test # deploy only runs if the test job succeeds
     steps:
       - name: Check out the code
         uses: actions/checkout@v4
