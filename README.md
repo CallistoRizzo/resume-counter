@@ -1,6 +1,6 @@
 # resume-counter
 
-Back end for my [Cloud Resume Challenge](https://cloudresumechallenge.dev/) project — a
+Back end for my Cloud Resume project — a
 visitor counter API running on **Cloudflare Workers** with **Workers KV** as the database.
 
 The front-end resume lives in a separate repo and is hosted on GitHub Pages:
