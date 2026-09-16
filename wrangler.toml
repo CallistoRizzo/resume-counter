@@ -1,0 +1,17 @@
+# wrangler.toml — Infrastructure-as-Code for the visitor-counter Worker
+# This file tells Cloudflare how to build and deploy the Worker,
+# and which resources (like the KV database) to connect to it.
+
+name = "resume-counter"
+main = "worker.js"
+compatibility_date = "2026-09-16"
+
+# --- KV namespace binding (your database) ---
+# "binding" is the variable name your code uses (env.COUNTER) — keep it as COUNTER.
+# "id" is the ID of the KV namespace you created in the Cloudflare dashboard.
+#
+# Find it at:  Storage & Databases -> KV -> (your "visitor_counter" namespace) -> ID
+# Or run:      npx wrangler kv namespace list
+[[kv_namespaces]]
+binding = "COUNTER"
+id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
