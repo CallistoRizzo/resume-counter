@@ -1,0 +1,13 @@
+{
+  "name": "resume-counter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Visitor counter API for the Cloud Resume Challenge",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.0"
+  }
+}
