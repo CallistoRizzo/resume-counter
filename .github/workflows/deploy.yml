@@ -1,0 +1,25 @@
+# .github/workflows/deploy.yml
+# Cloud Resume Challenge — CI/CD for the back end.
+# Automatically redeploys the Cloudflare Worker whenever you push to main.
+
+name: Deploy Worker
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: # lets you also run it manually from the Actions tab
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy resume-counter to Cloudflare
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        env:
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
