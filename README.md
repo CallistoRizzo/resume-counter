@@ -1,7 +1,7 @@
 # resume-counter
 
 
-Back end for my Cloud Resume project — a
+Back end for my Cloud Resume project: a
 visitor counter API running on **Cloudflare Workers** with **Workers KV** as the database,
 tested and deployed automatically with **GitHub Actions**.
 
@@ -19,11 +19,11 @@ The front-end resume lives in a separate repo and is hosted on GitHub Pages:
 
 | File | Purpose |
 |------|---------|
-| `worker.js` | The API — reads/increments/stores the count and returns JSON (with CORS). |
-| `wrangler.toml` | Infrastructure-as-Code — defines the Worker and its KV binding. |
+| `worker.js` | The API: reads/increments/stores the count and returns JSON (with CORS). |
+| `wrangler.toml` | Infrastructure-as-Code: defines the Worker and its KV binding. |
 | `package.json` | Declares the test tooling (Vitest) and the `npm test` command. |
-| `test/counter.test.js` | Integration tests — verify the API returns a valid, incrementing count. |
-| `.github/workflows/deploy.yml` | CI/CD — runs the tests, then deploys the Worker on every push to `main`. |
+| `test/counter.test.js` | Integration tests: verify the API returns a valid, incrementing count. |
+| `.github/workflows/deploy.yml` | CI/CD: runs the tests, then deploys the Worker on every push to `main`. |
 
 ## Testing
 
@@ -50,12 +50,12 @@ Deployment is fully automated. Every push to `main` triggers the GitHub Actions 
 which:
 
 1. **Runs the tests** (`npm test`).
-2. **Deploys the Worker** with `wrangler deploy` — but only if the tests pass.
+2. **Deploys the Worker** with `wrangler deploy` (but only if the tests pass).
 
 Two repository secrets are required:
 
-- `CLOUDFLARE_API_TOKEN` — a scoped token with the *Edit Cloudflare Workers* permission.
-- `CLOUDFLARE_ACCOUNT_ID` — my Cloudflare account ID.
+- `CLOUDFLARE_API_TOKEN`: a scoped token with the *Edit Cloudflare Workers* permission.
+- `CLOUDFLARE_ACCOUNT_ID`: my Cloudflare account ID.
 
 To deploy manually from a local machine instead:
 
@@ -67,7 +67,7 @@ wrangler deploy
 
 ## Tech
 
-- **Cloudflare Workers** — serverless API
-- **Cloudflare Workers KV** — key-value database
-- **Vitest** — automated tests
-- **GitHub Actions** — CI/CD (test + deploy)
+- **Cloudflare Workers**: serverless API
+- **Cloudflare Workers KV**: key-value database
+- **Vitest**: automated tests
+- **GitHub Actions**: CI/CD (test + deploy)
